@@ -7,24 +7,35 @@ Apc adalah bahasa pemrograman eksperimental yang dirancang untuk menggabungkan f
 - **Sintaksis Intuitif**: Mengadopsi sintaksis yang bersih dan mudah dibaca.
 - **Tipe Data Dinamis**: Mendukung tipe data dinamis dan struktur fleksibel.
 - **Integrasi JSON**: Dukungan bawaan untuk struktur data bergaya JSON.
-- **Berorientasi Web**: Dirancang dengan mempertimbangkan pengembangan web.
+- **Fungsi Bawaan**: Menyediakan berbagai fungsi bawaan untuk matematika, string, sistem, dan JSON.
+- **Portabilitas Lintas Platform**: Dapat dijalankan di Linux, Windows, dan macOS.
 
 ## Instalasi
 
-Untuk menjalankan interpreter Apc, Anda hanya perlu Python 3 terinstal di sistem Anda.
+Untuk menjalankan interpreter Apc, Anda hanya perlu Python 3 terinstal di sistem Anda. Kloning repositori ini:
 
 ```bash
 git clone https://github.com/zran6370-commits/ApcV1.git
 cd ApcV1
-python3 apc_interpreter.py <nama_file_apc>
 ```
 
 ## Penggunaan
 
-Untuk menjalankan program Apc, gunakan interpreter `apc_interpreter.py`:
+### Linux/macOS
+
+Berikan izin eksekusi pada skrip `apc.sh` dan jalankan program Apc:
 
 ```bash
-python3 apc_interpreter.py examples/hello.apc
+chmod +x apc.sh
+./apc.sh examples/hello.apc
+```
+
+### Windows
+
+Gunakan skrip `apc.bat` untuk menjalankan program Apc:
+
+```cmd
+apc.bat examples\hello.apc
 ```
 
 ## Contoh Kode
@@ -46,73 +57,35 @@ echo "Halo, Dunia!";
 
 ```apc
 $nama = "Apc";
-let versi = 0.1;
+let versi = 0.2;
 
 echo `Selamat datang di ${$nama} versi ${versi}!`;
 ```
 
-### Kondisional
+### Fungsi Bawaan
 
-`examples/conditionals.apc`:
-
-```apc
-$nilai = 75;
-
-if ($nilai >= 90) {
-  echo "Nilai A";
-} else if ($nilai >= 80) {
-  echo "Nilai B";
-} else if ($nilai >= 70) {
-  echo "Nilai C";
-} else {
-  echo "Nilai D";
-}
-```
-
-### Loop
-
-`examples/loops.apc`:
+`examples/builtins.apc`:
 
 ```apc
-for ($i = 0; $i < 3; $i++) {
-  echo `Iterasi ke: ${$i}`;
-}
+# Fungsi String
+echo str_upper("hello apc");
+echo str_lower("HELLO APC");
 
-$buah = ["Apel", "Jeruk", "Mangga"];
-for $item in $buah {
-  echo `Saya suka ${$item}`;
-}
-```
+# Fungsi Matematika
+echo math_sqrt(25);
+echo math_pow(2, 5);
 
-### Fungsi
+# Fungsi Sistem
+echo `Platform OS: ${get_env("PLATFORM")}`;
+echo `Waktu saat ini: ${now()}`;
 
-`examples/functions.apc`:
+# Fungsi JSON
+$data_obj = {"nama": "Budi", "usia": 30};
+$json_str = json_encode($data_obj);
+echo `JSON string: ${$json_str}`;
 
-```apc
-func tambah($a, $b) {
-  return $a + $b;
-}
-
-$hasil = tambah(5, 3);
-echo `Hasil penambahan: ${$hasil}`;
-```
-
-### Data JSON
-
-`examples/json_data.apc`:
-
-```apc
-$pengguna = {
-  "nama": "Budi",
-  "usia": 30,
-  "aktif": true
-};
-
-echo `Nama: ${$pengguna.nama}`;
-echo `Usia: ${$pengguna.usia}`;
-
-$data_json_string = json_encode($pengguna);
-echo $data_json_string;
+$decoded_obj = json_decode($json_str);
+echo `Nama dari JSON: ${$decoded_obj.nama}`; # Akses properti objek belum sepenuhnya didukung
 ```
 
 ## Kontribusi

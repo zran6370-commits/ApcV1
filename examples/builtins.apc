@@ -1,0 +1,20 @@
+# Fungsi String
+echo str_upper("hello apc");
+echo str_lower("HELLO APC");
+
+# Fungsi Matematika
+echo math_sqrt(25);
+echo math_pow(2, 5);
+
+# Fungsi Sistem
+echo `Platform OS: ${get_env("PLATFORM")}`;
+echo `Waktu saat ini: ${now()}`;
+
+# Fungsi JSON
+$data_obj = {"nama": "Budi", "usia": 30};
+$json_str = json_encode($data_obj);
+echo `JSON string: ${$json_str}`;
+
+# Akses properti objek belum sepenuhnya didukung di interpreter dasar
+# $decoded_obj = json_decode($json_str);
+# echo `Nama dari JSON: ${$decoded_obj.nama}`;
