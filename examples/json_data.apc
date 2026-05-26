@@ -1,0 +1,12 @@
+$pengguna = {
+  "nama": "Budi",
+  "usia": 30,
+  "aktif": true
+};
+
+echo `Nama: ${$pengguna.nama}`;
+echo `Usia: ${$pengguna.usia}`;
+
+# Asumsi ada fungsi json_encode bawaan
+# $data_json_string = json_encode($pengguna);
+# echo $data_json_string;

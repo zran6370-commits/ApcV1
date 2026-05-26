@@ -1,0 +1,8 @@
+for ($i = 0; $i < 3; $i++) {
+  echo `Iterasi ke: ${$i}`;
+}
+
+$buah = ["Apel", "Jeruk", "Mangga"];
+for $item in $buah {
+  echo `Saya suka ${$item}`;
+}

@@ -1,0 +1,4 @@
+$nama = "Apc";
+let versi = 0.1;
+
+echo `Selamat datang di ${$nama} versi ${versi}!`;
