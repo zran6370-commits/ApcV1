@@ -1,0 +1,31 @@
+# Fungsi String
+echo str_upper("hello apc");
+echo str_lower("HELLO APC");
+
+# Fungsi Matematika
+echo math_sqrt(25);
+echo math_pow(2, 5);
+
+# Fungsi Sistem
+echo `Platform OS: ${get_env("PLATFORM")}`;
+echo `Waktu saat ini: ${now()}`;
+
+# Fungsi JSON
+$data_obj = {"nama": "Budi", "usia": 30};
+$json_str = json_encode($data_obj);
+echo `JSON string: ${$json_str}`;
+
+# Perintah Sistem
+$file_test = "test_apc.txt";
+bash(`echo \"Ini adalah file dari Apc!\" > ${$file_test}`);
+echo `Isi file ${$file_test}:`;
+cat($file_test);
+
+$val1 = 10;
+$val2 = 10;
+if (is($val1, $val2)) {
+  echo "Nilai sama!";
+}
+
+%cd /tmp;
+echo `Direktori saat ini setelah cd: ${bash("pwd")}`;

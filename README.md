@@ -2,12 +2,15 @@
 
 Apc adalah bahasa pemrograman eksperimental yang dirancang untuk menggabungkan fitur-fitur dari Python, PHP, JSON, dan JavaScript. Tujuannya adalah untuk menyediakan bahasa yang serbaguna dan mudah digunakan untuk berbagai aplikasi, mulai dari skrip sederhana hingga pengembangan web.
 
+**Kreator**: oh apcmax
+
 ## Fitur Utama
 
 - **Sintaksis Intuitif**: Mengadopsi sintaksis yang bersih dan mudah dibaca.
 - **Tipe Data Dinamis**: Mendukung tipe data dinamis dan struktur fleksibel.
 - **Integrasi JSON**: Dukungan bawaan untuk struktur data bergaya JSON.
 - **Fungsi Bawaan**: Menyediakan berbagai fungsi bawaan untuk matematika, string, sistem, dan JSON.
+- **Interaksi Sistem**: Perintah bawaan untuk interaksi dengan sistem file dan eksekusi shell.
 - **Portabilitas Lintas Platform**: Dapat dijalankan di Linux, Windows, dan macOS.
 
 ## Instalasi
@@ -57,14 +60,14 @@ echo "Halo, Dunia!";
 
 ```apc
 $nama = "Apc";
-let versi = 0.2;
+let versi = 0.3;
 
 echo `Selamat datang di ${$nama} versi ${versi}!`;
 ```
 
-### Fungsi Bawaan
+### Fungsi Bawaan & Perintah Sistem
 
-`examples/builtins.apc`:
+`examples/system_commands.apc`:
 
 ```apc
 # Fungsi String
@@ -84,8 +87,20 @@ $data_obj = {"nama": "Budi", "usia": 30};
 $json_str = json_encode($data_obj);
 echo `JSON string: ${$json_str}`;
 
-$decoded_obj = json_decode($json_str);
-echo `Nama dari JSON: ${$decoded_obj.nama}`; # Akses properti objek belum sepenuhnya didukung
+# Perintah Sistem
+$file_test = "test_apc.txt";
+bash(`echo \"Ini adalah file dari Apc!\" > ${$file_test}`);
+echo `Isi file ${$file_test}:`;
+cat($file_test);
+
+$val1 = 10;
+$val2 = 10;
+if (is($val1, $val2)) {
+  echo "Nilai sama!";
+}
+
+%cd /tmp;
+echo `Direktori saat ini setelah cd: ${bash("pwd")}`;
 ```
 
 ## Kontribusi

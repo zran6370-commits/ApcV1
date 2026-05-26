@@ -157,8 +157,20 @@ Apc menyediakan beberapa fungsi bawaan untuk mempermudah pengembangan:
 | `json_decode(string)` | Mengubah string JSON menjadi data Apc.           | `json_decode("{\"key\":\"value\"}");`       |
 | `get_env(key)`   | Mengambil nilai variabel lingkungan.              | `get_env("PATH");`                             |
 | `exit(code)`     | Menghentikan eksekusi program dengan kode keluar. | `exit(0);`                                      |
+| `cat(file_path)` | Menampilkan isi file ke konsol.                  | `cat("myfile.txt");`                           |
+| `cd(path)`       | Mengubah direktori kerja saat ini.               | `cd("/home/user/documents");`                  |
+| `bash(command)`  | Menjalankan perintah shell eksternal.            | `bash("ls -l");`                               |
+| `is(val1, val2)` | Membandingkan dua nilai untuk kesetaraan.        | `is($a, $b);`                                   |
 
-## 6. Contoh Program Sederhana
+## 6. Perintah Khusus
+
+- **`%cd <path>`**: Mengubah direktori kerja saat ini. Ini adalah sintaksis khusus yang mirip dengan perintah shell untuk navigasi direktori.
+  ```apc
+  %cd /tmp
+  echo `Direktori saat ini: ${bash("pwd")}`;
+  ```
+
+## 7. Contoh Program Sederhana
 
 ```apc
 # Program Apc pertama saya
@@ -196,11 +208,19 @@ echo `Sistem Operasi: ${$platform_os}`;
 
 $random_num = math_pow(2, 4);
 echo `2 pangkat 4 adalah: ${$random_num}`;
-```
 
-## 7. Referensi
+# Contoh penggunaan perintah baru
+$file_test = "test.txt";
+bash(`echo \"Halo dari Apc!\" > ${$file_test}`);
+echo `Isi file ${$file_test}:`;
+cat($file_test);
 
-[1] Python Documentation: [https://docs.python.org/](https://docs.python.org/)
-[2] PHP Documentation: [https://www.php.net/docs.php](https://www.php.net/docs.php)
-[3] JavaScript (MDN Web Docs): [https://developer.mozilla.org/en-US/docs/Web/JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[4] JSON (json.org): [https://www.json.org/json-en.html](https://www.json.org/json-en.html)
+$val1 = 10;
+$val2 = 10;
+if (is($val1, $val2)) {
+  echo "Nilai sama!";
+}
+
+%cd /tmp;
+echo `Direktori saat ini setelah cd: ${bash("pwd")}`;
+
